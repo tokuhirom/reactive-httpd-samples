@@ -45,7 +45,7 @@ public class RxNettyServer {
     }
 
     private Observable<Void> handle(HttpServerRequest<ByteBuf> request, HttpServerResponse<ByteBuf> response) {
-        System.out.println("Server => Request: " + request.getPath());
+        System.out.println("server => Request: " + request.getPath());
         log.info("has content: {}",
                 request.getHeaders().hasContent());
         for (String name : request.getHeaders().names()) {
