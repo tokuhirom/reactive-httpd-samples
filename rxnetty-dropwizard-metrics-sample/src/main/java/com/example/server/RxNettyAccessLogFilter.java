@@ -57,9 +57,9 @@ public class RxNettyAccessLogFilter implements RequestHandler<ByteBuf, ByteBuf> 
         return observable;
     }
 
-    public static String renderLog(HttpServerRequest<ByteBuf> request, HttpServerResponse<ByteBuf> response, Function<HttpServerRequest<ByteBuf>, String> userIdGenerator) {
+    public String renderLog(HttpServerRequest<ByteBuf> request, HttpServerResponse<ByteBuf> response, Function<HttpServerRequest<ByteBuf>, String> userIdGenerator) {
         return getRemoteAddress(request) + " - - " + userIdGenerator.apply(request)
-                + " [" + ZonedDateTime.now().format(COMBINED_LOG_DATE_TIME_FORMATTER) + "] \""
+                + " [" + renderTimestamp() + "] \""
                 + request.getHttpMethod()
                 + " " + request.getUri()
                 + " " + request.getHttpVersion()
